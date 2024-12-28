@@ -5,6 +5,7 @@ function Staff() {
   const [staffList, setStaffList] = useState([]);
   const [newStaff, setNewStaff] = useState({ name: '', position: '',fname:'', phone : ''});
   const [modalopen, setmodalopen] =useState(false)
+  const [currentId, setCurrentId] = useState(1);
   
   // Load staff data from localStorage on component mount
   useEffect(() => {
@@ -25,7 +26,9 @@ function Staff() {
   const handleAddStaff = (e) => {
     e.preventDefault();
     if (newStaff.name && newStaff.position && newStaff.fname && newStaff.phone) {
-      setStaffList([...staffList, newStaff]);
+      const staffWithId = { id: currentId, ...newStaff };
+      setStaffList([...staffList, staffWithId]);
+      setCurrentId(currentId + 1);
       setNewStaff({ name: '',fname: '', position: '', phone:'' }); // Reset form
     }
   };

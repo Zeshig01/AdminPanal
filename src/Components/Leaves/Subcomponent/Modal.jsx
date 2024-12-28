@@ -1,37 +1,8 @@
-// import React from 'react';
-
-// function Modal({ modalopen, setmodalopen }) {
-//   return (
-//     <>
-//       {modalopen && (
-//         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-//           <div className="bg-white p-6 rounded shadow-lg w-full max-w-lg">
-           
-//            <div className='flex justify-between'>
-//            <h2 className="text-xl font-semibold text-gray-600 mb-4">Add Leave</h2>
-//            <button
-//               onClick={() => setmodalopen(false)}
-//               className="bg-gradient-to-tr from-fuchsia-700 to-pink-500 px-3 text-white rounded hover:underline"
-//             >
-//               X
-//             </button>
-//            </div>
-            
-           
-            
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
-
-// export default Modal;
-
 import React, { useState } from 'react';
 
-function Modal({ modalopen, setmodalopen }) {
+function Modal({ modalopen, setmodalopen, staffList, getdata }) {
   const [leaveDetails, setLeaveDetails] = useState({
+    staffname: '',
     leaveType: '',
     startDate: '',
     endDate: '',
@@ -48,10 +19,9 @@ function Modal({ modalopen, setmodalopen }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle the leave form submission here
     console.log('Leave details submitted:', leaveDetails);
-    // Close the modal after submission
-    setmodalopen(false);
+    setmodalopen(false); // Close the modal
+    getdata(leaveDetails);
   };
 
   return (
@@ -71,6 +41,25 @@ function Modal({ modalopen, setmodalopen }) {
 
             {/* Leave Form */}
             <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-600">Select Staff</label>
+                <select
+                  name="staffname"
+                  value={leaveDetails.staffname}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border rounded focus:outline-none"
+                >
+                  <option value="" disabled>
+                    Select a staff member
+                  </option>
+                  {staffList.map((staff) => (
+                    <option key={staff.id} value={staff.name}>
+                      {staff.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-600">Leave Type</label>
                 <input
@@ -118,7 +107,7 @@ function Modal({ modalopen, setmodalopen }) {
 
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full"
+                className="bg-gradient-to-tr from-fuchsia-700 to-pink-500  text-white px-4 py-2 rounded  w-full"
               >
                 Submit Leave Request
               </button>
