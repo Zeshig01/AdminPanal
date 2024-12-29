@@ -100,8 +100,8 @@ function New_Tabs() {
               },
             }}
           >
-            <Tab icon={<PaymentsIcon />} iconPosition="start" label="Pay Roll" />
-            <Tab icon={<AccessibilityIcon />} iconPosition="start" label="Staff " />
+            <Tab icon={<PaymentsIcon />} iconPosition="start" label="Staff" />
+            <Tab icon={<AccessibilityIcon />} iconPosition="start" label="Pay Roll " />
             <Tab icon={<DocumentScannerIcon />} iconPosition="start" label="Attendance" />
             <Tab icon={<CalendarMonthIcon />} iconPosition="start" label="Pay Heads" />
             <Tab icon={<LocalAtmIcon />} iconPosition="start" label="Salaries" />
