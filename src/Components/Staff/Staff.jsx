@@ -3,7 +3,7 @@ import Modal from './Subcomponent/Modal';
 
 function Staff() {
   const [staffList, setStaffList] = useState([]);
-  const [newStaff, setNewStaff] = useState({ name: '', position: '',fname:'', phone : ''});
+  const [newStaff, setNewStaff] = useState({ name: '', position: '',fname:'', phone : '',  salary: ''});
   const [modalopen, setmodalopen] =useState(false)
   const [currentId, setCurrentId] = useState(1);
   
@@ -52,15 +52,15 @@ function Staff() {
                 className="p-4 bg-white shadow rounded flex justify-between items-center"
               >
                 <div className='flex gap-3'>
-                  <div>
+                  <div className='border-r pr-3'>
                   {index}
                   </div>
-                  <div className='space-y-3'>
+                  <div className='space-y-3 mx-2'>
                   <p className="font-medium text-gray-800"> <span className='font-bold text-fuchsia-600'> Name: </span>  {staff.name}</p>
                   <p className="text-sm text-gray-600"> <span className='font-bold text-fuchsia-600'> Father Name: </span>  {staff.fname}</p>
                   <p className="text-sm text-gray-600"> <span className='font-bold text-fuchsia-600'> Designation: </span> {staff.position}</p>
                   <p className="text-sm text-gray-600"> <span className='font-bold text-fuchsia-600'> Phone No. : </span> {staff.phone}</p>
-                  </div>
+                    </div>
                 </div>
               </div>
             ))

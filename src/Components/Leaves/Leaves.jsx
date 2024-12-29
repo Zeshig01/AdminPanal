@@ -57,7 +57,7 @@ function Leaves() {
 
       {filteredStaff.map((staff, i) => (
         <div className="my-3 " key={i}>
-          <table className="min-w-[70%]   bg-red-200  ">
+          <table className="min-w-[70%] rounded-lg    bg-red-200  ">
             <thead>
               <tr className="">
                 <th className="px-4 py-2 text-left">Staff ID</th>
@@ -68,9 +68,9 @@ function Leaves() {
             </thead>
             <tbody>
               <tr>
-                <td className=" px-4 py-2 text-center">{i}</td>
-                <td className=" px-4 py-2 text-center">{staff.name}</td>
-                <td className=" px-4 py-2 text-center">
+                <td className=" py-2 text-center">{i}</td>
+                <td className="  py-2 text-center">{staff.name}</td>
+                <td className=" py-2 text-center">
                   {staff.leaveDetails
                     ? `${staff.leaveDetails.leaveType} from ${staff.leaveDetails.startDate} to ${staff.leaveDetails.endDate}`
                     : 'No leave'}
