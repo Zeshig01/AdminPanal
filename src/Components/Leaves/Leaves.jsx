@@ -1,4 +1,5 @@
 
+
 import React, { useEffect, useState } from 'react';
 import Modal from './Subcomponent/Modal';
 
@@ -21,7 +22,6 @@ function Leaves() {
 
   // Update staffList with new leave data
   const getdata = (leaveDetails) => {
-    // Find the staff by name and add the leave details
     const updatedStaffList = staffList.map((staff) =>
       staff.name === leaveDetails.staffname
         ? { ...staff, leaveDetails: leaveDetails }
@@ -34,52 +34,51 @@ function Leaves() {
   };
 
   return (
-    <div>
-      <div className="flex justify-between items-center">
-        <div>
+    <div className="container mx-auto p-4">
+      <div className="flex justify-between items-center mb-6">
+        <div className="w-full sm:w-auto">
           <input
             type="text"
             placeholder="Search staff"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="border w-72 rounded-lg py-3 px-2 mb-4"
+            className="w-full sm:w-72 px-4 py-2 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-pink-400"
           />
         </div>
         <div>
           <button
             onClick={() => setmodalopen(true)}
-            className="px-5 bg-gradient-to-tr from-fuchsia-700 to-pink-500 py-3 mb-9 rounded-lg text-white"
+            className="px-6 py-3 bg-gradient-to-tr from-fuchsia-700 to-pink-500 text-white rounded-lg shadow-md hover:scale-105 transform transition-all"
           >
             Add Leave
           </button>
         </div>
       </div>
 
-      {filteredStaff.map((staff, i) => (
-        <div className="my-3 " key={i}>
-          <table className="min-w-[70%] rounded-lg    bg-red-200  ">
-            <thead>
-              <tr className="">
-                <th className="px-4 py-2 text-left">Staff ID</th>
-                <th className="py-2 text-left">Staff Name</th>
-              
-                <th className=" px-4 py-2 text-left">Leave Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className=" py-2 text-center">{i}</td>
-                <td className="  py-2 text-center">{staff.name}</td>
-                <td className=" py-2 text-center">
+      <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
+        <table className="min-w-full table-auto">
+          <thead className="bg-pink-500 text-white">
+            <tr>
+              <th className="px-4 py-2 text-left">Staff ID</th>
+              <th className="px-4 py-2 text-left">Staff Name</th>
+              <th className="px-4 py-2 text-left">Leave Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredStaff.map((staff, i) => (
+              <tr key={i} className="border-b hover:bg-gray-100 ">
+                <td className="px-4 py-2 text-left">{i + 1}</td>
+                <td className="px-4 py-2 text-left">{staff.name}</td>
+                <td className="px-4 py-2 text-left">
                   {staff.leaveDetails
                     ? `${staff.leaveDetails.leaveType} from ${staff.leaveDetails.startDate} to ${staff.leaveDetails.endDate}`
                     : 'No leave'}
                 </td>
               </tr>
-            </tbody>
-          </table>
-        </div>
-      ))}
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <Modal
         modalopen={modalopen}
