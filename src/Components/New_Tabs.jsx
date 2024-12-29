@@ -47,9 +47,9 @@ function New_Tabs() {
   const renderTabContent = () => {
     switch (selectedTab) {
       case 0:
-        return <Pay_Roll />;
+        return <Staff/> ;
       case 1:
-        return <Staff />;
+        return <Pay_Roll />;
       case 2:
         return <Attendance />;
       case 3:
