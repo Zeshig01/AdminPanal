@@ -55,7 +55,11 @@ function Staff() {
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-700">Staff Management</h1>
+      <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-indigo-500 to-pink-500">
+  Staff Management
+</h1>
+
+
         <input
           type="text"
           placeholder="Search staff"
