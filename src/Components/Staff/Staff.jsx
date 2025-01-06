@@ -1,213 +1,3 @@
-// // import React, { useState, useEffect } from 'react';
-// // import Modal from './Subcomponent/Modal';
-
-// // function Staff() {
-// //   const [staffList, setStaffList] = useState([]);
-// //   const [newStaff, setNewStaff] = useState({ name: '', position: '',fname:'', phone : '',  salary: ''});
-// //   const [modalopen, setmodalopen] =useState(false)
-// //   const [currentId, setCurrentId] = useState(1);
-  
-// //   // Load staff data from localStorage on component mount
-// //   useEffect(() => {
-// //     const storedStaff = JSON.parse(localStorage.getItem('staffList')) || [];
-// //     setStaffList(storedStaff);
-// //   }, []);
-
-// //   // Save staff data to localStorage whenever the list updates
-// //   useEffect(() => {
-// //     localStorage.setItem('staffList', JSON.stringify(staffList));
-// //   }, [staffList]);
-
-// //   const handleInputChange = (e) => {
-// //     const { name, value } = e.target;
-// //     setNewStaff({ ...newStaff, [name]: value });
-// //   };
-
-// //   const handleAddStaff = (e) => {
-// //     e.preventDefault();
-// //     if (newStaff.name && newStaff.position && newStaff.fname && newStaff.phone) {
-// //       const staffWithId = { id: currentId, ...newStaff };
-// //       setStaffList([...staffList, staffWithId]);
-// //       setCurrentId(currentId + 1);
-// //       setNewStaff({ name: '', position: '',fname:'', phone : '',  salary: '' }); 
-// //       setmodalopen(false) 
-// //     }
-// //   };
-
-// //   return (
-// //     <div className="p-6 bg-gray-100 min-h-screen">
-// //       <h1 className="text-2xl font-bold text-gray-700 mb-4">Staff Management</h1>
-
-// //       {/* Staff List */}
-// //       <div className="mb-6">
-// //        <div className='flex justify-between items-center'>
-// //         <div><h2 className="text-xl font-semibold text-gray-600 mb-3">Staff List</h2></div>
-// //         <div > <button onClick={()=>setmodalopen(true)} className='px-5 bg-gradient-to-tr from-fuchsia-700 to-pink-500  py-3 mb-9 rounded-lg text-white'>Add New Staff</button></div>
-// //        </div>
-        
-// //         <div className="space-y-4">
-// //           {staffList.length > 0 ? (
-// //             staffList.map((staff, index) => (
-// //               <div
-// //                 key={index}
-// //                 className="p-4 bg-white shadow rounded flex justify-between items-center"
-// //               >
-// //                 <div className='flex gap-3'>
-// //                   <div className='border-r pr-3'>
-// //                   {index}
-// //                   </div>
-// //                   <div className='space-y-3 mx-2'>
-// //                   <p className="font-medium text-gray-800"> <span className='font-bold text-fuchsia-600'> Name: </span>  {staff.name}</p>
-// //                   <p className="text-sm text-gray-600"> <span className='font-bold text-fuchsia-600'> Father Name: </span>  {staff.fname}</p>
-// //                   <p className="text-sm text-gray-600"> <span className='font-bold text-fuchsia-600'> Designation: </span> {staff.position}</p>
-// //                   <p className="text-sm text-gray-600"> <span className='font-bold text-fuchsia-600'> Phone No. : </span> {staff.phone}</p>
-// //                     </div>
-// //                 </div>
-// //               </div>
-// //             ))
-// //           ) : (
-// //             <p className="text-gray-500">No staff members available.</p>
-// //           )}
-// //         </div>
-// //       </div>
-
-// //       {/* Add New Staff */}
-      
-// //       <Modal  modalopen={modalopen}
-// //           setmodalopen={setmodalopen}
-// //           newStaff={newStaff}
-// //           setNewStaff={setNewStaff}
-// //           handleAddStaff={handleAddStaff}
-// //           handleInputChange={handleInputChange}/>
-// //     </div>
-    
-// //   );
-// // }
-
-
-
-// // export default Staff;
-
-
-// import React, { useState, useEffect } from 'react';
-// import Modal from './Subcomponent/Modal';
-
-// function Staff() {
-//   const [staffList, setStaffList] = useState([]);
-//   const [newStaff, setNewStaff] = useState({ name: '', position: '', fname: '', phone: '', salary: '' });
-//   const [modalopen, setmodalopen] = useState(false);
-//   const [currentId, setCurrentId] = useState(1);
-
-//   // Load staff data from localStorage on component mount
-//   useEffect(() => {
-//     const storedStaff = JSON.parse(localStorage.getItem('staffList')) || [];
-//     if (storedStaff.length === 0) {
-//       const dummyData = [
-//         { id: 1, name: 'John Doe', fname: 'Richard Doe', position: 'Manager', phone: '1234567890', salary: '50000' },
-//         { id: 2, name: 'Jane Smith', fname: 'Robert Smith', position: 'Developer', phone: '9876543210', salary: '45000' },
-//       ];
-//       setStaffList(dummyData);
-//       setCurrentId(dummyData.length + 1);
-//     } else {
-//       setStaffList(storedStaff);
-//     }
-//   }, []);
-
-//   // Save staff data to localStorage whenever the list updates
-//   useEffect(() => {
-//     localStorage.setItem('staffList', JSON.stringify(staffList));
-//   }, [staffList]);
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setNewStaff({ ...newStaff, [name]: value });
-//   };
-
-//   const handleAddStaff = (e) => {
-//     e.preventDefault();
-//     if (newStaff.name && newStaff.position && newStaff.fname && newStaff.phone) {
-//       const staffWithId = { id: currentId, ...newStaff };
-//       setStaffList([...staffList, staffWithId]);
-//       setCurrentId(currentId + 1);
-//       setNewStaff({ name: '', position: '', fname: '', phone: '', salary: '' });
-//       setmodalopen(false);
-//     }
-//   };
-
-//   const handleDeleteStaff = (id) => {
-//     const updatedList = staffList.filter((staff) => staff.id !== id);
-//     setStaffList(updatedList);
-//   };
-
-//   return (
-//     <div className="p-6 bg-gray-100 min-h-screen">
-//       <h1 className="text-2xl font-bold text-gray-700 mb-4">Staff Management</h1>
-
-//       {/* Staff List */}
-//       <div className="mb-6">
-//         <div className="flex justify-between items-center">
-//           <h2 className="text-xl font-semibold text-gray-600 mb-3">Staff List</h2>
-//           <button
-//             onClick={() => setmodalopen(true)}
-//             className="px-5 bg-gradient-to-tr from-fuchsia-700 to-pink-500 py-3 mb-9 rounded-lg text-white"
-//           >
-//             Add New Staff
-//           </button>
-//         </div>
-
-//         <div className="space-y-4">
-//           {staffList.length > 0 ? (
-//             staffList.map((staff) => (
-//               <div
-//                 key={staff.id}
-//                 className="p-4 bg-white shadow rounded flex justify-between items-center"
-//               >
-//                 <div className="flex gap-3">
-//                   <div className="border-r pr-3">{staff.id}</div>
-//                   <div className="space-y-3 mx-2">
-//                     <p className="font-medium text-gray-800">
-//                       <span className="font-bold text-fuchsia-600">Name:</span> {staff.name}
-//                     </p>
-//                     <p className="text-sm text-gray-600">
-//                       <span className="font-bold text-fuchsia-600">Father Name:</span> {staff.fname}
-//                     </p>
-//                     <p className="text-sm text-gray-600">
-//                       <span className="font-bold text-fuchsia-600">Designation:</span> {staff.position}
-//                     </p>
-//                     <p className="text-sm text-gray-600">
-//                       <span className="font-bold text-fuchsia-600">Phone No.:</span> {staff.phone}
-//                     </p>
-//                   </div>
-//                 </div>
-//                 <button
-//                   onClick={() => handleDeleteStaff(staff.id)}
-//                   className="text-white bg-red-500 px-3 py-1 rounded hover:bg-red-600 transition"
-//                 >
-//                   X
-//                 </button>
-//               </div>
-//             ))
-//           ) : (
-//             <p className="text-gray-500">No staff members available.</p>
-//           )}
-//         </div>
-//       </div>
-
-//       {/* Add New Staff */}
-//       <Modal
-//         modalopen={modalopen}
-//         setmodalopen={setmodalopen}
-//         newStaff={newStaff}
-//         setNewStaff={setNewStaff}
-//         handleAddStaff={handleAddStaff}
-//         handleInputChange={handleInputChange}
-//       />
-//     </div>
-//   );
-// }
-
-// export default Staff;
-
 import React, { useState, useEffect } from 'react';
 import Modal from './Subcomponent/Modal';
 
@@ -218,22 +8,11 @@ function Staff() {
   const [currentId, setCurrentId] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Load staff data from localStorage on component mount
   useEffect(() => {
     const storedStaff = JSON.parse(localStorage.getItem('staffList')) || [];
-    if (storedStaff.length === 0) {
-      const dummyData = [
-        { id: 1, name: 'John Doe', fname: 'Richard Doe', position: 'Manager', phone: '1234567890', salary: '50000' },
-        { id: 2, name: 'Jane Smith', fname: 'Robert Smith', position: 'Developer', phone: '9876543210', salary: '45000' },
-      ];
-      setStaffList(dummyData);
-      setCurrentId(dummyData.length + 1);
-    } else {
-      setStaffList(storedStaff);
-    }
+    setStaffList(storedStaff);
   }, []);
 
-  // Save staff data to localStorage whenever the list updates
   useEffect(() => {
     localStorage.setItem('staffList', JSON.stringify(staffList));
   }, [staffList]);
@@ -254,22 +33,19 @@ function Staff() {
     }
   };
 
-  const handleDeleteStaff = (id) => {
-    const updatedList = staffList.filter((staff) => staff.id !== id);
-    setStaffList(updatedList);
+  const handleRemoveStaff = (id) => {
+    const updatedStaff = staffList.filter((staff) => staff.id !== id);
+    setStaffList(updatedStaff);
   };
 
-  // Filter staff based on search term
   const filteredStaff = staffList.filter((staff) =>
     staff.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-bold text-gray-700 mb-4">Staff Management</h1>
-
-      {/* Search Field */}
-      <div className="mb-6 flex justify-between items-center">
+    <div className="container mx-auto p-4">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-gray-700">Staff Management</h1>
         <input
           type="text"
           placeholder="Search staff"
@@ -279,53 +55,56 @@ function Staff() {
         />
         <button
           onClick={() => setmodalopen(true)}
-          className="px-5 bg-gradient-to-tr from-fuchsia-700 to-pink-500 py-3 rounded-lg text-white"
+          className="px-6 py-3 bg-gradient-to-tr from-fuchsia-700 to-pink-500 text-white rounded-lg shadow-md hover:scale-105 transform transition-all"
         >
           Add New Staff
         </button>
       </div>
 
-      {/* Staff List */}
-      <div className="mb-6">
-        <div className="space-y-4">
-          {filteredStaff.length > 0 ? (
-            filteredStaff.map((staff) => (
-              <div
-                key={staff.id}
-                className="p-4 bg-white shadow rounded flex justify-between items-center"
-              >
-                <div className="flex gap-3">
-                  <div className="border-r pr-3">{staff.id}</div>
-                  <div className="space-y-3 mx-2">
-                    <p className="font-medium text-gray-800">
-                      <span className="font-bold text-fuchsia-600">Name:</span> {staff.name}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      <span className="font-bold text-fuchsia-600">Father Name:</span> {staff.fname}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      <span className="font-bold text-fuchsia-600">Designation:</span> {staff.position}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      <span className="font-bold text-fuchsia-600">Phone No.:</span> {staff.phone}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => handleDeleteStaff(staff.id)}
-                  className="text-white bg-red-500 px-3 py-1 rounded hover:bg-red-600 transition"
-                >
-                  X
-                </button>
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-500">No staff members available.</p>
-          )}
-        </div>
+      <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
+        <table className="min-w-full table-auto">
+          <thead className="bg-pink-500 text-white">
+            <tr>
+              <th className="px-4 py-2 text-left">ID</th>
+              <th className="px-4 py-2 text-left">Name</th>
+              <th className="px-4 py-2 text-left">Father Name</th>
+              <th className="px-4 py-2 text-left">Position</th>
+              <th className="px-4 py-2 text-left">Phone</th>
+              <th className="px-4 py-2 text-left">Salary</th>
+              <th className="px-4 py-2 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredStaff.length > 0 ? (
+              filteredStaff.map((staff) => (
+                <tr key={staff.id} className="border-b hover:bg-gray-100">
+                  <td className="px-4 py-2 text-left">{staff.id}</td>
+                  <td className="px-4 py-2 text-left">{staff.name}</td>
+                  <td className="px-4 py-2 text-left">{staff.fname}</td>
+                  <td className="px-4 py-2 text-left">{staff.position}</td>
+                  <td className="px-4 py-2 text-left">{staff.phone}</td>
+                  <td className="px-4 py-2 text-left">{staff.salary}</td>
+                  <td className="px-4 py-2 text-center">
+                    <button
+                      onClick={() => handleRemoveStaff(staff.id)}
+                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7" className="px-4 py-2 text-center text-gray-500">
+                  No staff members found.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
 
-      {/* Add New Staff */}
       <Modal
         modalopen={modalopen}
         setmodalopen={setmodalopen}
